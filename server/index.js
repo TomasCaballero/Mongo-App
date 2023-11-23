@@ -8,8 +8,10 @@ const serverTCP = net.createServer();
 
 serverTCP.on("connection", (socket) => {
 
-    socket.on("data", () => {
+    socket.on("data", (bufferData) => {
+        const data = JSON.parse(bufferData.toString());
 
+        console.log(data);
     });
 
     socket.on("close", () => {
