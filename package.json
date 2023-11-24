@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "description": "Mongo App - UTN 2023",
   "main": "./server/index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
-    "server" : "node --watch ./server/index.js",
-    "client" : "node ./client/client.js"
+    "server": "node --watch ./server/index.js",
+    "client": "node ./client/client.js"
   },
   "keywords": [],
   "author": "Tomás Bautista Caballero",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "mongodb": "^6.3.0"
   }
 }
