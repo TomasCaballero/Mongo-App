@@ -2,6 +2,7 @@ import net from "node:net";
 import dotenv from "dotenv";
 import { writeHistory } from "../utils/handleHistory.js";
 import { randomUUID } from "node:crypto";
+import { createConnectionMongo } from "../database/mongodb.js";
 dotenv.config();
 
 let PORT = process.env.PORT ?? 2323;
@@ -13,7 +14,6 @@ serverTCP.on("connection", (socket) => {
     const id = randomUUID();
     socket.on("data", (bufferData) => {
         const data = JSON.parse(bufferData.toString());
-
         console.log(data);
     });
 
@@ -30,6 +30,7 @@ serverTCP.on("connection", (socket) => {
     writeHistory('connected', id);
 })
 
-serverTCP.listen(PORT,()=>{
+serverTCP.listen(PORT, async()=>{
     console.log(`Server is up on port: ${PORT} - ${new Date().toLocaleString()}`);
+    await createConnectionMongo();
 })
